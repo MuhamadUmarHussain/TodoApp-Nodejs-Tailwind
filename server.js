@@ -11,10 +11,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const lists = [];
 const worklist = [];
 
+
 app.get('/', (req, res) => {
   const day = date.getdate();
 
-  res.render('list', { date: day, lists: lists});
+  res.render('list', { date: day, lists: lists, btn_h: 'Goto Work',link: '/work'});
 });
 
 app.post('/', (req, res) => {
@@ -38,11 +39,14 @@ app.post('/', (req, res) => {
     }
   }
 
+
+
+
   
 });
 
 app.get('/work', (req, res) => {
-  res.render('list', { date: 'Work List', lists: worklist});
+  res.render('list', { date: 'Work List', lists: worklist, btn_h: 'Go Back', link: '/'});
 });
 
 app.listen(3000, () => {
