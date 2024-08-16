@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.place-center::placeholder {
+    @apply text-center
+}
+
+.list input[type="checkbox"]:checked + p {
+    @apply line-through italic;
+}
