@@ -7,27 +7,24 @@
 
     <div class="main flex justify-center items-center ">
         <div class="container  bg-white w-fit p-6 rounded-xl">
-        
-            <% for(let i = 0 ; i<lists.length; i++){ %>
-                <div class="list flex justify-start items-center gap-5">
-                    <input type="checkbox"> 
-                    <p><%= lists[i] %></p>
-                </div>
-            <% } %>
+
+            <% lists.forEach(ele =>{ %>
+                
+                <form action="/delete" method="post">
+                    <div class="list flex justify-start items-center gap-5">
+                        <input type="checkbox" name="checkbox" value="<%=ele._id%>" onchange="this.form.submit()"> 
+                        <p><%= ele.name %></p>
+                    </div>
+                    <input type="hidden" name="val" value="<%= date %>">
+                </form>
+
+            <% }) %>
     
             <form action="/" method="post" class="flex justify-center items-center gap-2">
                 <input class="h-10 place-center text-center" type="text" name="list" id="l1" placeholder="New Item">
                 <button type="submit" name="button" value=<%= date %> > <p class="text-3xl bg-purple-900 rounded-full px-2 text-white">+</p></button>
             </form>
-
-            <form action="/" method="post" class="flex justify-center items-center p-3">
-                <button type="submit" class="text-xl bg-red-700 rounded px-6 py-1 italic hover:bg-red-400" name="btn" value=<%= date %> >Clear All</button>
-            </form>
         </div>
-    </div>
-
-    <div class="button flex justify-center items-center p-6">
-        <a href="<%= link %>" class="bg-green-400 px-6 py-1 rounded italic hover:bg-red-400"><%= btn_h %></a>
     </div>
 
     <%- include('footer') -%>
